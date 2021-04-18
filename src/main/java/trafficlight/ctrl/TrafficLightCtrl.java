@@ -27,6 +27,7 @@ public class TrafficLightCtrl implements ObserverInterface {
         gui = new TrafficLightGui(this);
         gui.setVisible(true);
         //TODO useful to update the current state
+        this.update();
     }
 
     public static TrafficLightCtrl getInstance(){
@@ -42,6 +43,7 @@ public class TrafficLightCtrl implements ObserverInterface {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                update();
                 return yellowState;
             }
             @Override
@@ -55,6 +57,7 @@ public class TrafficLightCtrl implements ObserverInterface {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                update();
                 return yellowState;
             }
             @Override
@@ -69,10 +72,12 @@ public class TrafficLightCtrl implements ObserverInterface {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    update();
                     return redState;
                 }else {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    update();
                     return greenState;
                 }
             }
