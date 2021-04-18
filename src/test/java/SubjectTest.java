@@ -47,10 +47,4 @@ public class SubjectTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    /*
-
-     */
-    void
-
 }

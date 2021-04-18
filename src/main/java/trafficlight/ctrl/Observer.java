@@ -1,6 +1,6 @@
 package trafficlight.ctrl;
 
-public interface ObserverInterface {
+public interface Observer {
 
     public abstract void update();
 

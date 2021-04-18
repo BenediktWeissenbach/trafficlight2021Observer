@@ -3,7 +3,7 @@ package trafficlight.ctrl;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
-public class TrafficLightCtrl implements ObserverInterface {
+public class TrafficLightCtrl implements Observer {
 
     private State greenState;
 
@@ -127,5 +127,15 @@ public class TrafficLightCtrl implements ObserverInterface {
     @Override
     public void update() {
 
+        nextState();
+
+    }
+
+    public State getCurrentState(){
+        return currentState;
+    }
+
+    public State getPreviousState(){
+        return previousState;
     }
 }

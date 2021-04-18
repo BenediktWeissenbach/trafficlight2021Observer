@@ -13,11 +13,20 @@ public class Subject {
         this.observers = new ArrayList<>();
     }
 
-    public void addObserver(){}
+    public void addObserver(TrafficLightCtrl observer){
+        observers.add(observer);
+    }
 
-    public void removeObserver(){}
+    public void removeObserver(TrafficLightCtrl observer){
+        observers.remove(observer);
+    }
 
-    public void notifyObserver(){}
+    //https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
+    public void notifyObserver(){
+        for (TrafficLightCtrl observer : observers) {
+            observer.update();
+        }
+    }
 
     public List<TrafficLightCtrl> getObservers(){
         return observers;
