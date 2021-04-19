@@ -2,6 +2,7 @@ package trafficlight.gui;
 
 import trafficlight.ctrl.Observer;
 import trafficlight.ctrl.TrafficLightCtrl;
+import trafficlight.states.State;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,9 @@ public class Subject {
     }
 
     //https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
-    public void notifyObserver(){
+    public void notifyObserver(State s){
         for (Observer observer : observers) {
-            observer.update();
+            observer.update(s);
         }
     }
 

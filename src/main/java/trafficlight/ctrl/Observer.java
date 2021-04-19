@@ -1,7 +1,9 @@
 package trafficlight.ctrl;
 
+import trafficlight.states.State;
+
 public interface Observer {
 
-    public abstract void update();
+    void update(State s);
 
 }

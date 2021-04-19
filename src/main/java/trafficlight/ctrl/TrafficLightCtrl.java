@@ -3,7 +3,7 @@ package trafficlight.ctrl;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
-public class TrafficLightCtrl implements Observer {
+public class TrafficLightCtrl {
 
     private State greenState;
 
@@ -27,7 +27,7 @@ public class TrafficLightCtrl implements Observer {
         gui = new TrafficLightGui(this);
         gui.setVisible(true);
         //TODO useful to update the current state
-        greenState.notifyObserver();
+        currentState.notifyObserver(currentState);
     }
 
     public static TrafficLightCtrl getInstance(){
@@ -43,7 +43,8 @@ public class TrafficLightCtrl implements Observer {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
-                notifyObserver();
+                yellowState.notifyObserver(yellowState);
+                notifyObserver(this);
                 return yellowState;
             }
             @Override
@@ -57,7 +58,8 @@ public class TrafficLightCtrl implements Observer {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
-                notifyObserver();
+                yellowState.notifyObserver(yellowState);
+                notifyObserver(this);
                 return yellowState;
             }
             @Override
@@ -72,12 +74,14 @@ public class TrafficLightCtrl implements Observer {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
-                    notifyObserver();
+                    redState.notifyObserver(redState);
+                    notifyObserver(this);
                     return redState;
                 }else {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
-                    notifyObserver();
+                    greenState.notifyObserver(greenState);
+                    notifyObserver(this);
                     return greenState;
                 }
             }
@@ -124,12 +128,14 @@ public class TrafficLightCtrl implements Observer {
         doRun = false;
     }
 
-    @Override
+    /*@Override
     public void update() {
 
         nextState();
 
     }
+
+     */
 
     public State getCurrentState(){
         return currentState;

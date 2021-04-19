@@ -2,6 +2,7 @@ package trafficlight.gui;
 
 
 import trafficlight.ctrl.Observer;
+import trafficlight.states.State;
 
 import java.awt.*;
 
@@ -23,8 +24,12 @@ public class TrafficLight extends Light implements Observer {
     //TODO implement a part of the pattern here
 
     @Override
-    public void update() {
-        turnOn(isOn());
+    public void update(State s) {
+        if (isOn()) {
+            turnOn(false);
+        } else {
+            turnOn(true);
+        }
     }
 
 }
